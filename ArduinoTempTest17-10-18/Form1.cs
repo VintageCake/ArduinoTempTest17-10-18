@@ -30,7 +30,7 @@ namespace ArduinoTempTest17_10_18
             ar1 = new SerialPort {
                 PortName = "COM1", // Måste populeras med någonting i början, kommer att ändras senare.
                 BaudRate = 9600,
-                ReadTimeout = 15000 // Ha detta längre än det intervallet som det tar att hämta data, dvs att om intervallet för varje temperaturmätning så måste timeout vara över 30s.
+                ReadTimeout = 40000 // Ha detta längre än det intervallet som det tar att hämta data, dvs att om intervallet för varje temperaturmätning så måste timeout vara över 30s.
             };
         }
 
@@ -82,11 +82,10 @@ namespace ArduinoTempTest17_10_18
                     ar1.Open();
                     ar1.DiscardInBuffer(); // Slänger det som väntade på att bli plockat.
                     ar1.Write("T"); // Skriver bokstaven T i ASCII.
-                    Thread.Sleep(10); // Väntar 10ms.
+                    Thread.Sleep(100); // Väntar 100ms. 10ms är tillräckligt för en Genuino R3, men inte en Nano med CH340 USB-To-Serial.
 
                     buffer += ar1.ReadExisting(); // Läser respektive COM-port och sätter data i en hållvariabel
                     if (buffer.Contains("!")) { // Om buffer inehåller en karaktär som arduinon ska svara med, returnera porten.
-                        buffer = "";
                         return port;
                     }
                     ar1.Close();
