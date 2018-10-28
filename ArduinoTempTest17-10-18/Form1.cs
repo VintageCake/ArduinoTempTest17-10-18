@@ -138,7 +138,7 @@ namespace ArduinoTempTest17_10_18
             notifyIcon1.ShowBalloonTip(4000);
         }
         void showReconnect() { // Visar reconnect notifikation i 4s.
-            notifyIcon1.BalloonTipText = "Reconnected, printing data";
+            notifyIcon1.BalloonTipText = "Connected, printing data";
             notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
             notifyIcon1.ShowBalloonTip(4000);
         }
