@@ -97,8 +97,8 @@ namespace ArduinoTempTest17_10_18
             return null;
         }
 
-        static void WriteTxt(string parsedData) // Tar någon form av data, sätter tidstämpel och lägger det i en textfil.
-{
+        static void WriteTxt(string parsedData) { // Tar någon form av data, sätter tidstämpel och lägger det i en textfil.
+
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Textdump\Temperature\TemperatureData.txt"; // Genererar en väg till temperatur-data.
             if (!File.Exists(path)) { // Om filen inte redan finns - fortsätt.
                 FileRetry:
@@ -121,6 +121,8 @@ namespace ArduinoTempTest17_10_18
                 tw.WriteLine(DateTime.Now.ToString());
                 tw.Close();
             }
+
+
             else if (File.Exists(path)) { // Om loggfilen finns, lägg på den data som skickas.
                 using (var tw = new StreamWriter(path,true)) { // using kommer att kasta bort resurserna(minnesplatsen) till TextWriter när detta blocket är färdigt.
                     if (firstOpen == false) {
