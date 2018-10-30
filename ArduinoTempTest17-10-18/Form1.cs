@@ -109,7 +109,7 @@ namespace ArduinoTempTest17_10_18
                 catch (DirectoryNotFoundException) // Om inte ens mappen finns, skapa den.
                 {
                     if (Directory.Exists(path)) {
-                        Console.WriteLine("Something is really broken");
+                       // Console.WriteLine("Something is really broken");
                         return;
                     }
                     DirectoryInfo di = Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Textdump\Temperature\"); // Skapar ny mapp
